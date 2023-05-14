@@ -14,6 +14,10 @@
   ],
   "author": "Hexagon Six",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hexagon6/svelte-solid-store.git"
+  },
   "dependencies": {
     "@inrupt/solid-client": "^1.28.1",
     "@inrupt/vocab-common-rdf": "^1.0.5",
