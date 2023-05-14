@@ -1,0 +1,24 @@
+{
+  "name": "@hexagon6/svelte-solid-store",
+  "version": "0.0.1",
+  "description": "svelte stores for solid (social linked data)",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "solidproject",
+    "svelte",
+    "store",
+    "webid"
+  ],
+  "author": "Hexagon Six",
+  "license": "MIT",
+  "dependencies": {
+    "@inrupt/solid-client": "^1.28.1",
+    "@inrupt/vocab-common-rdf": "^1.0.5",
+    "@inrupt/vocab-solid": "^1.0.4",
+    "ramda": "^0.29.0",
+    "svelte": "^3.59.1"
+  }
+}
