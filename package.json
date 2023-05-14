@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "solidproject",
+    "solid",
+    "linked data",
     "svelte",
     "store",
     "webid"
