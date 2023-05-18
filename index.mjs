@@ -36,7 +36,6 @@ export const webId = derived(session, async ($session, set) => {
 export const username = derived(
   webId,
   ($webId) => {
-    console.log({ $webId });
     if ($webId) {
       const name = curry(getStringNoLocale)(__, VCARD.fn);
 
