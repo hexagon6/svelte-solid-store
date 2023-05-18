@@ -38,7 +38,6 @@ export const username = derived(
   ($webId) => {
     console.log({ $webId });
     if ($webId) {
-      console.log({ $webId });
       const name = curry(getStringNoLocale)(__, VCARD.fn);
 
       return _(name)($webId);
