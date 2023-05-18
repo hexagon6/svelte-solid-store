@@ -6,7 +6,7 @@ import {
   getThing,
   getNamedNode,
 } from "@inrupt/solid-client";
-import { SOLID } from "@inrupt/vocab-solid";
+import { SOLID, WS } from "@inrupt/vocab-solid";
 import { VCARD } from "@inrupt/vocab-common-rdf";
 
 export const pod = writable();
@@ -67,3 +67,4 @@ export const privateTypeIndex = derived(
   webId,
   namedNodeFromWebId(SOLID.privateTypeIndex)
 );
+export const spaceStorage = derived(webId, namedNodeFromWebId(WS.storage));
