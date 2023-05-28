@@ -38,6 +38,8 @@ export async function load({ url }) {
     session.set(getDefaultSession());
   }
 }
+
+export const ssr = false;
 ```
 
 ```svelte
@@ -66,8 +68,6 @@ export async function load({ url }) {
     logout()
     session.set(null)
   }
-
-  export const ssr = false
 </script>
 
 svelte-solid-store
