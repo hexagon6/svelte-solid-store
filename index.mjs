@@ -43,14 +43,17 @@ export const fetchSolidResource = derived(
   }
 );
 
-export const webId = derived(session, async ($session, set) => {
-  if ($session?.info.isLoggedIn) {
-    const { info } = $session;
-    set(await fetchSolidResource($session, info?.webId));
-  } else {
-    set(undefined);
+export const webId = derived(
+  [session, fetchSolidResource],
+  async ([$session, $fetchSolidResource], set) => {
+    if ($session?.info.isLoggedIn) {
+      const { info } = $session;
+      set(await $fetchSolidResource($session, info?.webId));
+    } else {
+      set(undefined);
+    }
   }
-});
+);
 
 /*
   username is undefined if not logged in
