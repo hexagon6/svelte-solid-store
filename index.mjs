@@ -1,4 +1,4 @@
-import { __, curry, pipe as _ } from "ramda";
+import { __, curry, filter, identity, map, pipe as _, uniq } from "ramda";
 import { derived, writable } from "svelte/store";
 import {
   getSolidDataset,
@@ -81,17 +81,28 @@ const namedNodeFromWebId = (/** @type {string} */ type) => (webId) => {
   return result ? result.value : null;
 };
 
-export const publicTypeIndex = derived(
-  webId,
-  namedNodeFromWebId(SOLID.publicTypeIndex)
-);
-export const privateTypeIndex = derived(
-  webId,
-  namedNodeFromWebId(SOLID.privateTypeIndex)
-);
 export const spaceStorage = derived(webId, namedNodeFromWebId(WS.storage));
 
 export const preferencesFile = derived(
   webId,
   namedNodeFromWebId(WS.preferencesFile)
+);
+
+export const preferences = derived(
+  [preferencesFile, fetchSolidResource],
+  async ([$preferencesFile, $fetchSolidResource], set) => {
+    if ($preferencesFile) {
+      set(await $fetchSolidResource($preferencesFile));
+    } else {
+      set(undefined);
+    }
+  }
+);
+export const publicTypeIndex = derived(
+  [webId, preferences],
+  _(map(namedNodeFromWebId(SOLID.publicTypeIndex)), uniq, filter(identity))
+);
+export const privateTypeIndex = derived(
+  [webId, preferences],
+  _(map(namedNodeFromWebId(SOLID.privateTypeIndex)), uniq, filter(identity))
 );
