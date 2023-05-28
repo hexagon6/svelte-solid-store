@@ -13,16 +13,40 @@ export const pod = writable();
 
 export const session = writable();
 
+export const fetchAuthenticated = derived([session], ([$session], set) =>
+  set(
+    $session?.info.isLoggedIn
+      ? async (
+          /** @type {string | import("@inrupt/solid-client").Url} */ resource
+        ) =>
+          await getSolidDataset(resource, {
+            fetch: $session.fetch,
+          })
+      : new Promise(() => undefined)
+  )
+);
+
+export const fetchSolidResource = derived(
+  [fetchAuthenticated, session],
+  ([$fetchAuthenticated, $session]) => {
+    if ($session?.info.isLoggedIn && $session?.info?.webId) {
+      const { webId } = $session.info;
+      return async (
+        /** @type {string | import('@inrupt/solid-client').Iri} */ resource
+      ) =>
+        resource
+          ? _(curry(getThing)(__, webId))(await $fetchAuthenticated(resource))
+          : undefined;
+    } else {
+      return () => undefined;
+    }
+  }
+);
+
 export const webId = derived(session, async ($session, set) => {
   if ($session?.info.isLoggedIn) {
     const { info } = $session;
-    const webIdDataset = await getSolidDataset(info?.webId, {
-      fetch: $session.fetch,
-    });
-
-    const thing = curry(getThing)(__, info.webId);
-
-    set(_(thing)(webIdDataset));
+    set(await fetchSolidResource($session, info?.webId));
   } else {
     set(undefined);
   }
