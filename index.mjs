@@ -48,7 +48,7 @@ export const webId = derived(
   async ([$session, $fetchSolidResource], set) => {
     if ($session?.info.isLoggedIn) {
       const { info } = $session;
-      set(await $fetchSolidResource($session, info?.webId));
+      set(await $fetchSolidResource(info?.webId));
     } else {
       set(undefined);
     }
