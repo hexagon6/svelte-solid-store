@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Using svelte & sveltekit is nice. Using solid (social linked data) should be nice too, so svelte-solid store gives you easy access to webId, username, publicTypeIndex & privateTypeIndex to get you started.
+Using svelte & sveltekit is nice. Using solid (social linked data) should be nice too, so svelte-solid store gives you easy access to webId, username, preferencesFile, publicTypeIndex & privateTypeIndex to get you started.
 
 ## Usage (with sveltekit and ssr disabled)
 

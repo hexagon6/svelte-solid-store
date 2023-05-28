@@ -66,3 +66,8 @@ export const privateTypeIndex = derived(
   namedNodeFromWebId(SOLID.privateTypeIndex)
 );
 export const spaceStorage = derived(webId, namedNodeFromWebId(WS.storage));
+
+export const preferencesFile = derived(
+  webId,
+  namedNodeFromWebId(WS.preferencesFile)
+);
