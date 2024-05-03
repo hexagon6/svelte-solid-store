@@ -24,6 +24,6 @@
     "@inrupt/vocab-common-rdf": "^1.0.5",
     "@inrupt/vocab-solid": "^1.0.4",
     "ramda": "^0.30.0",
-    "svelte": "^4.2.12"
+    "svelte": "^4.2.12 || ^5.0.0"
   }
 }
