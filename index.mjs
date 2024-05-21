@@ -92,8 +92,8 @@ export const preferencesFile = derived(
 );
 
 export const preferences = derived(
-  [preferencesFile, fetchSolidResource],
-  async ([$preferencesFile, $fetchSolidResource], set) => {
+  [session, preferencesFile, fetchSolidResource],
+  async ([$session, $preferencesFile, $fetchSolidResource], set) => {
     if ($preferencesFile) {
       set(await $fetchSolidResource($preferencesFile));
     } else {
