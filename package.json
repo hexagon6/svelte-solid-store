@@ -1,6 +1,6 @@
 {
   "name": "@hexagon6/svelte-solid-store",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "svelte stores for solid (social linked data)",
   "main": "index.mjs",
   "scripts": {
