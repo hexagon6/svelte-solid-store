@@ -20,7 +20,7 @@
     "url": "git+https://github.com/hexagon6/svelte-solid-store.git"
   },
   "dependencies": {
-    "@inrupt/solid-client": "^3.0.0",
+    "@inrupt/solid-client": "^4.0.0",
     "@inrupt/vocab-common-rdf": "^1.0.5",
     "@inrupt/vocab-solid": "^1.0.4",
     "ramda": "^0.32.0",
